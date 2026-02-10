@@ -1,0 +1,14 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Screenshots (added later manually)
+*.png
+*.jpg
+
+# Logs
+*.log
