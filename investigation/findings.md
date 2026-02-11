@@ -44,3 +44,43 @@ Elastic Security detected Windows Event ID 4648, indicating the use of explicit 
 
 ### Analyst Assessment
 The activity is consistent with credential usage via the `runas` command. While locally generated in this lab, similar behavior is commonly observed during lateral movement, privilege escalation attempts, or persistence activity in real-world intrusions.
+
+
+
+# Incident Findings — SOC-Incident-Case-001
+
+## Incident Classification
+**Type:** Insider Misuse  
+**Severity:** Medium  
+**Confidence:** High  
+
+## Summary
+The investigation identified suspicious internal activity involving explicit credential usage followed by outbound network connections initiated via PowerShell. The activity originated from a legitimate user account and did not rely on malware, indicating potential insider misuse or policy violation.
+
+## Key Observations
+
+### Explicit Credential Usage
+- Windows Security Event ID 4648 detected.
+- Account `testuser` credentials explicitly used via `runas`.
+- Indicates manual authentication attempt rather than automated process.
+- Common in privilege escalation or account misuse scenarios.
+
+### Process Execution
+- Multiple Sysmon Event ID 1 entries observed.
+- PowerShell used as the primary execution context.
+- Behavior aligns with living-off-the-land techniques.
+
+### Network Activity
+- Sysmon Event ID 3 captured outbound TCP connection.
+- Destination IP: `10.0.2.5`
+- Destination Port: `8000`
+- Non-browser process used for HTTP communication.
+- Pattern consistent with staging, testing, or unauthorized data transfer.
+
+## Impact Assessment
+- No evidence of malware persistence.
+- No confirmed data exfiltration.
+- Elevated risk due to credential misuse and unsanctioned network activity.
+
+## Analyst Assessment
+The activity chain strongly suggests insider misuse involving credential abuse and unauthorized network communication. While no destructive actions were observed, the behavior represents a policy violation and potential security risk requiring containment and user review.
