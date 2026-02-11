@@ -39,3 +39,25 @@
 - Credential usage preceded outbound network activity.
 - PowerShell acted as the execution and network pivot point.
 - Activity chain suggests manual operator behavior rather than automated malware.
+
+
+## Incident Timeline
+
+**2026-02-11 04:24 UTC**
+- Windows Security Event ID 4648 detected
+- Explicit credentials used via `runas`
+- Target account: testuser
+- Source host: DESKTOP-MSCRJC2
+- Risk: Potential credential misuse or privilege escalation
+
+**2026-02-11 04:25 UTC**
+- Sysmon Event ID 1 observed
+- PowerShell process execution detected
+- Command-line activity consistent with manual operator action
+
+**2026-02-11 04:26 UTC**
+- Sysmon Event ID 3 detected
+- Non-browser process established outbound TCP connection
+- Destination: 10.0.2.5:8000
+- Process: powershell.exe
+- Risk: Possible command-and-control or staging activity
