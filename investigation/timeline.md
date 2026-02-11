@@ -17,3 +17,25 @@
 - **Action:** Reviewed process, user context, and destination IP
 - **Assessment:** Activity confirmed as simulated attacker staging from Kali Linux host
 
+
+## Initial Process Activity
+- Multiple process execution events observed via Sysmon (Event ID 1).
+- PowerShell execution identified as a recurring parent process.
+
+## Explicit Credential Usage
+- Windows Event ID 4648 detected.
+- Explicit credentials used for account `testuser`.
+- Activity consistent with `runas` usage.
+- Indicates potential credential abuse or lateral movement preparation.
+
+## Outbound Network Connection
+- Sysmon Event ID 3 detected.
+- Non-browser process (`powershell.exe`) initiated outbound TCP connection.
+- Destination IP: 10.0.2.5
+- Destination Port: 8000
+- Behavior consistent with HTTP staging or command-and-control activity.
+
+## Analyst Correlation
+- Credential usage preceded outbound network activity.
+- PowerShell acted as the execution and network pivot point.
+- Activity chain suggests manual operator behavior rather than automated malware.
