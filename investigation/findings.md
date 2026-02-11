@@ -84,3 +84,21 @@ The investigation identified suspicious internal activity involving explicit cre
 
 ## Analyst Assessment
 The activity chain strongly suggests insider misuse involving credential abuse and unauthorized network communication. While no destructive actions were observed, the behavior represents a policy violation and potential security risk requiring containment and user review.
+
+## Incident Summary
+
+On February 11, 2026, suspicious activity was detected on a Windows endpoint
+(DESKTOP-MSCRJC2) during routine security monitoring.
+
+The activity involved the use of explicit credentials (Windows Event ID 4648),
+followed by outbound network connections from non-browser processes over
+an uncommon port (8000). These behaviors are commonly associated with
+credential misuse, lateral movement, or command-and-control (C2) staging.
+
+The activity was detected using custom Elastic Security detection rules
+built on Windows Security and Sysmon telemetry.
+
+While this activity occurred in a controlled lab environment, the observed
+techniques closely resemble real-world attacker tradecraft and would
+warrant investigation in a production SOC environment.
+
