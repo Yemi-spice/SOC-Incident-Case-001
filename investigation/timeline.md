@@ -1,14 +1,19 @@
-# Timeline (SOC-Incident-Case-001)
+## Incident Timeline – SOC Incident Case 001
 
-> All times are in (your lab timezone). Source: Winlogbeat + Sysmon + Windows Security logs.
+### 2026-02-10 08:32:29 UTC
+- **Event:** Outbound network connection detected
+- **Source:** Sysmon Event ID 3
+- **Details:** PowerShell established a TCP connection to 10.0.2.5:8000
+- **Detection:** Elastic Security – Suspicious Outbound Network Connection (Non-Browser)
 
-## Day X — Feb __, 2026
+### 2026-02-10 08:32:30 UTC
+- **Event:** Alert generated
+- **Rule:** Suspicious Outbound Network Connection (Non-Browser)
+- **Severity:** Medium
+- **Risk Score:** 55
 
-- [ ] (Time) Lab validated: Elasticsearch + Kibana reachable.
-- [ ] (Time) Winlogbeat shipping logs to Elasticsearch (winlogbeat-*).
-- [ ] (Time) Sysmon running (Sysmon64 service).
-- [ ] (Time) Created local users: backdoor + testuser (EID 4720).
-- [ ] (Time) Added users to local Administrators (EID 4732).
-- [ ] (Time) Explicit credential attempt via RUNAS (EID 4648).
-- [ ] (Time) Failed logon attempts (EID 4625) + reason/status captured.
-- [ ] (Time) PowerShell encoded command observed (Sysmon EID 1).
+### 2026-02-10 08:35 UTC
+- **Event:** Analyst investigation initiated
+- **Action:** Reviewed process, user context, and destination IP
+- **Assessment:** Activity confirmed as simulated attacker staging from Kali Linux host
+
